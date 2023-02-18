@@ -1,4 +1,4 @@
-# PyCode
+# 파이썬 코딩테스트 저장소
 
 [백준](https://www.acmicpc.net/), [프로그래머스](https://programmers.co.kr/) 사이트에 있는 문제들 중 고난도의 문제들을 추려 올리는 곳입니다.
 
