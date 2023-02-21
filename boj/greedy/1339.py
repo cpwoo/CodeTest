@@ -8,7 +8,7 @@ d = {}
 for word in words:
     digit = len(word)-1
     for w in word:
-        if w in dict:
+        if w in d:
             d[w] += pow(10, digit)
         else:
             d[w] = pow(10, digit)
