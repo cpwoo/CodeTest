@@ -1,10 +1,9 @@
 import sys
 input = lambda: sys.stdin.readline().rstrip()
 
-from math import pi
-from cmath import *
+p = 469762049
 
-def fft(arr, inv=False):
+def fft(arr, invert=False):
     j = 0
     n = len(arr)
     for i in range(1, n):
@@ -15,43 +14,39 @@ def fft(arr, inv=False):
         j += bit
         if i < j:
             arr[i], arr[j] = arr[j], arr[i]
-    
-    m = 1
-    while m < n:
-        theta = (-pi/m if inv else pi/m)
-        w = complex(cos(theta), sin(theta))
-        for i in range(0, n, m*2):
-            p = complex(1, 0)
-            for j in range(m):
-                tmp = arr[m+i+j]*p
-                arr[m+i+j] = arr[i+j]-tmp
-                arr[i+j] += tmp
-                p *= w   
+    m = 2
+    while m <= n:
+        u = pow(3, p//m, p)
+        if invert:
+            u = pow(u, p-2, p)
+        for i in range(0, n, m):
+            w = 1
+            for k in range(i, i+m//2):
+                tmp = arr[k+m//2]*w
+                arr[k+m//2] = (arr[k]-tmp)%p
+                arr[k] = (arr[k]+tmp)%p
+                w = (w*u)%p
         m *= 2
-            
-    if inv:
+    if invert:
+        invertedN = p-(p-1)//n
         for i in range(n):
-            arr[i] /= n
-    
+            arr[i] = (arr[i]*invertedN)%p
+
 
 def multiply(A, B):
-    _max = len(A)+len(B)-1
-    n = 1
-    while n <= _max:
-        n <<= 1
-    
-    A += [0]*(n-len(A))
-    B += [0]*(n-len(B))
+    _max = max(len(A), len(B))
+    N = 1
+    while N < _max:
+        N <<= 1
+    N <<= 1
+    A += [0]*(N-len(A))
+    B += [0]*(N-len(B))
+    C = [0]*N
 
     fft(A); fft(B)
-    for i in range(n):
-        A[i] *= B[i]
-    
-    fft(A, True)
-    C = [0]*n
-    for i in range(n):
-        C[i] = round(A[i].real)
+    C = [(i*j)%p for i,j in zip(A, B)]
 
+    fft(C, invert=True)
     return C
 
 
