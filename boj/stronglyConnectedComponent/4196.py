@@ -15,7 +15,7 @@ def reverse_dfs(node, visited, stack):
     ids[node] = idx
     stack.append(node)
     for nxt in reverse_graph[node]:
-        if visited[nxt] == 0:
+        if not visited[nxt]:
             reverse_dfs(nxt, visited, stack)
 
 
