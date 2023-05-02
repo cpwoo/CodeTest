@@ -1,5 +1,4 @@
 def solution(n, cores):
-    answer = 0
     if n <= len(cores):
         return n
     
