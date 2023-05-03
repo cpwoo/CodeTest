@@ -1,8 +1,8 @@
 def solution(sticker):
-    if len(sticker) == 1:
-        return sticker[0]
-    
     n = len(sticker)
+    
+    if n == 1: return sticker[0]
+    
     # 첫 번째 뜯은 경우, 아닌 경우
     d1, d2 = [0]*n, [0]*n
     
