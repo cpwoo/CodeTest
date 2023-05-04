@@ -1,7 +1,6 @@
 from collections import deque
 
 def solution(x, y, n):
-    answer = 0
     q = deque([x])
     visited = [-1]*(y+1)
     visited[x] = 0
