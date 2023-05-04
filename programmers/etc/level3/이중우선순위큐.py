@@ -1,7 +1,6 @@
 from heapq import *
 
 def solution(operations):
-    answer = []
     q, max_q = [], []
     for op in operations:
         cmd, num = op.split()
