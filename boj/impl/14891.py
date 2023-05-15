@@ -3,7 +3,7 @@ input = lambda: sys.stdin.readline().rstrip()
 
 from collections import deque
 
-t = [deque(list(map(int, input().split()))) for _ in range(4)] # 톱니 상태
+t = [deque(list(map(int, input()))) for _ in range(4)] # 톱니 상태
 
 # 톱니 돌리기
 for _ in range(int(input())):
@@ -39,13 +39,8 @@ for _ in range(int(input())):
 
 # 출력
 res = 0
-if t[0][0] == 1:
-    res += 1
-if t[1][0] == 1:
-    res += 2
-if t[2][0] == 1:
-    res += 4
-if t[3][0] == 1:
-    res += 8
+for i in range(4):
+    if t[i][0] == 1:
+        res += pow(2, i)
     
 print(res)
