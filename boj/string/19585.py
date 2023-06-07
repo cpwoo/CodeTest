@@ -1,26 +1,41 @@
 import sys
 input = lambda: sys.stdin.readline().rstrip()
 
-def chk(word):
-    d = colors
-    for i in range(len(word)):
-        if d.get(0) and word[i:] in names:
-            return 1
-        if not d.get(word[i]):
-            return
-        d = d[word[i]]
+from collections import defaultdict
+
+class Node:
+    def __init__(self):
+        self.child = defaultdict(Node)
+        self.end = False
+
+class Trie:
+    def __init__(self):
+        self.root = Node()
+    
+    def insert(self, word):
+        node = self.root
+        for w in word:
+            node = node.child[w]
+        node.end = True
+
+    def search(self, word, n):
+        node = self.root
+        for i in range(n):
+            if node.end and word[i:] in s:
+                return 1
+            if word[i] not in node.child:
+                return 0
+            node = node.child[word[i]]
 
 
 C, N = map(int, input().split())
-colors = {}
+t = Trie()
+s = set()
 for _ in range(C):
-    d = colors
-    for i in input():
-        if not d.get(i):
-            d[i] = {}
-        d = d[i]
-    d[0] = 1
-names = {input() for _ in range(N)}
+    t.insert(input())
+for _ in range(N):
+    s.add(input())
 
 for _ in range(int(input())):
-    print("Yes" if chk(input()) else "No")
+    q = input()
+    print("Yes" if t.search(q, len(q)) else "No")
