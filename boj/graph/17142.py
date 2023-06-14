@@ -47,6 +47,11 @@ for i in range(N):
         elif Lab[i][j] == 1:
             wall_cnt += 1
 
+# 이미 퍼진 경우 예외 처리 Code
+if len(virus)+wall_cnt == N*N:
+    print(0)
+    exit()
+
 answer = INF
 for v in combinations(virus, M):
     answer = min(answer, bfs(v))
