@@ -9,3 +9,7 @@
 - SELECT에서 별칭을 준 건 ORDER BY 외에는 인식하지 못한다. 
 
     이는 연산 순서가 FROM - WHERE - GROUP BY - HAVING - SELECT - ORDER BY 이기 때문이다.
+
+- ORACLE은 문자열 대소문자를 구분한다. 즉, 'AB'와 'ab'는 다르다.
+
+- 반면 MySQL은 문자열 대소문자를 구분하지 않는다. 즉, 'AB'와 'ab'가 같다.
