@@ -1,4 +1,4 @@
-package CodeTest.Java.programmers.etc.level2;
+package CodeTest.Java.programmers.kakao.level2;
 
 import java.util.*;
 
