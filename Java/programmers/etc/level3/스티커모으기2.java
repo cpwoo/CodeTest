@@ -1,6 +1,6 @@
 package CodeTest.Java.programmers.etc.level3;
 
-public class 스티커모으기 {
+public class 스티커모으기2 {
     public int solution(int[] sticker) {
         int n = sticker.length;
         
