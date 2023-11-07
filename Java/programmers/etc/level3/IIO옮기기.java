@@ -1,6 +1,6 @@
 package CodeTest.Java.programmers.etc.level3;
 
-public class IIO만들기 {
+public class IIO옮기기 {
     public String[] solution(String[] st) {
         String[] answer = new String[st.length];
         for (int i=0; i<st.length; i++) {
