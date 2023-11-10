@@ -34,7 +34,7 @@ def solution(k, num, links):
             parent[b] = node
     root_node = parent.index(-1)
     
-    if k > group:
+    if k > exam_room(root_node, max(num), num, links):
         return max(num)
 
     lo, hi = max(num), sum(num)
