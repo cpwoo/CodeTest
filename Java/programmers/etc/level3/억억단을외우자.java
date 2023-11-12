@@ -1,4 +1,4 @@
-package CodeTest.Java.programmers.etc.level4;
+package CodeTest.Java.programmers.etc.level3;
 
 public class 억억단을외우자 {
     public int[] solution(int e, int[] starts) {
