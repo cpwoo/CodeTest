@@ -20,7 +20,7 @@ for i in range(N):
         if dp[i][j] >= M:
             result = min(result, j)
 
-if M == 0:
+if M == 0 or tc == 0:
     print(0)
 elif N == 1:
     print(cost[0])
