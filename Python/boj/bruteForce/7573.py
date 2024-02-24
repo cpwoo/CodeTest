@@ -5,8 +5,6 @@ dx, dy = [0,1,0,-1], [1,0,-1,0]
 
 def cnt(sx, sy, ex, ey):
     tmp = 0
-    if ex > N or ey > N:
-        return 0
     for x, y in fish:
         if sx <= x < ex and sy <= y < ey:
             tmp += 1
