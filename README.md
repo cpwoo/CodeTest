@@ -10,6 +10,8 @@
 
 - 2023.11.13 추가사항 : 프로그래머스 Java 문항도 정리해서 추가했습니다.
 
-- 이후 추가사항 : HackerRank SQL 문항 정리 예정입니다.
+- 2024.03.26 추가사항 : HackerRank SQL 문항도 정리해서 추가했습니다.
+
+- 이후 추가사항 : 삼성 SW 역량테스트 기출문제 정리 목적으로 코드트리 문항 정리 예정입니다.
 
 [![hyp3rflow's solved.ac stats](https://github-readme-solvedac.hyp3rflow.vercel.app/api/?handle=world9969)](https://solved.ac/profile/world9969)
