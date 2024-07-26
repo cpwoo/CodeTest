@@ -8,8 +8,8 @@ public class boj11014 {
 	private static BufferedWriter bw;
     private static StringTokenizer st;
 
-    private static int[] dx = new int[]{0, 0, -1, -1, 1, 1};
-    private static int[] dy = new int[]{-1, 1, -1, 1, -1, 1};
+    private static int[] dx = {0, 0, -1, -1, 1, 1};
+    private static int[] dy = {-1, 1, -1, 1, -1, 1};
 
     private static int n, m, connect[][][];
     private static boolean check[][], v[][];
