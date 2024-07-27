@@ -2,7 +2,7 @@ import sys
 input = lambda: sys.stdin.readline().rstrip()
 
 n, m = map(int, input().split())
-switch = [list(map(int, input().split())) for _ in range(n)]
+switch = [list(map(int, input())) for _ in range(n)]
 k = int(input())
 
 answer = 0
