@@ -3,7 +3,7 @@ input = lambda: sys.stdin.readline().rstrip()
 
 from itertools import combinations
 
-n = int(input())
+n = int(input())-1
 nums = []
 
 for i in range(1, 11):
