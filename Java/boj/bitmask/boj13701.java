@@ -3,7 +3,7 @@ package CodeTest.Java.boj.bitmask;
 import java.io.*;
 import java.util.*;
 
-public class boj13071 {
+public class boj13701 {
     private static BufferedReader br;
 	private static BufferedWriter bw;
     private static StringTokenizer st;
