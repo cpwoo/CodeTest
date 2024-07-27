@@ -7,7 +7,7 @@ broken = list(map(int, input().split()))
 
 cnt = abs(100-target)
 
-for nums in range(100_001):
+for nums in range(1_000_001):
     nums = str(nums)
 
     for i in range(len(nums)):
