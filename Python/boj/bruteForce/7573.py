@@ -1,8 +1,6 @@
 import sys
 input = lambda : sys.stdin.readline().rstrip()
 
-dx, dy = [0,1,0,-1], [1,0,-1,0]
-
 def cnt(sx, sy, ex, ey):
     tmp = 0
     for x, y in fish:
