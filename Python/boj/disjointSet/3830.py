@@ -29,6 +29,6 @@ while True:
             union(cmd[1], cmd[2], cmd[3])
         else:
             if parent[cmd[1]] == parent[cmd[2]]:
-                print(dist[cmd[2]] -dist[cmd[1]])
+                print(dist[cmd[2]]-dist[cmd[1]])
             else:
                 print("UNKNOWN")
