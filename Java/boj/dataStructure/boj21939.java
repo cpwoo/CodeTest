@@ -4,6 +4,23 @@ import java.io.*;
 import java.util.*;
 
 public class boj21939 {
+    static class Node implements Comparable<Node> {
+        int L, P;
+        Node(int L, int P) {
+            this.L = L;
+            this.P = P;
+        }
+    
+        @Override
+        public int compareTo(Node node) {
+            if(this.L != node.L) {
+                return this.L-node.L;
+            } else {
+                return this.P-node.P;
+            }
+        }
+    }
+
     private static BufferedReader br;
 	private static BufferedWriter bw;
     private static StringTokenizer st;
@@ -63,21 +80,4 @@ public class boj21939 {
         }
     }
 
-}
-
-class Node implements Comparable<Node> {
-    int L, P;
-    Node(int L, int P) {
-        this.L = L;
-        this.P = P;
-    }
-
-    @Override
-    public int compareTo(Node node) {
-        if(this.L != node.L) {
-            return this.L-node.L;
-        } else {
-            return this.P-node.P;
-        }
-    }
 }
