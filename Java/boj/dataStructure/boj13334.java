@@ -4,6 +4,14 @@ import java.io.*;
 import java.util.*;
 
 public class boj13334 {
+    static class Node {
+        int house, office;
+        Node(int house, int office) {
+            this.house = house;
+            this.office = office;
+        }
+    }
+
     private static BufferedReader br;
 	private static BufferedWriter bw;
     private static StringTokenizer st;
@@ -60,12 +68,4 @@ public class boj13334 {
         bw.write(answer+"");
     }
 
-}
-
-class Node {
-    int house, office;
-    Node(int house, int office) {
-        this.house = house;
-        this.office = office;
-    }
 }
