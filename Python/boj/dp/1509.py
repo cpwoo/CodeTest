@@ -1,8 +1,6 @@
 import sys
 input = lambda: sys.stdin.readline().rstrip()
 
-sys.setrecursionlimit(10**8)
-
 s = input()
 L = len(s)
 
