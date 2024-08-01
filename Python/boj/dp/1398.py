@@ -1,7 +1,6 @@
 import sys
 input = lambda: sys.stdin.readline().rstrip()
 
-k = 0
 coin = [1, 10, 25]
 
 for _ in range(int(input())):
