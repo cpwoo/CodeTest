@@ -2,7 +2,6 @@ import sys
 input = lambda: sys.stdin.readline().rstrip()
 
 n, m = map(int, input().split())
-arr = []
 dp = [[0 for _ in range(m)] for _ in range(n)]
 arr = [list(map(int, input())) for _ in range(n)]
 
