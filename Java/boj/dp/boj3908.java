@@ -15,8 +15,6 @@ public class boj3908 {
 
         solve();
 
-        bw.write(sb.toString());
-
         bw.flush();
         bw.close();
     }
@@ -53,6 +51,8 @@ public class boj3908 {
             int k = Integer.parseInt(st.nextToken());
             sb.append(dp[n][k]).append('\n');
         }
+        
+        bw.write(sb.toString());
     }
 
 }
