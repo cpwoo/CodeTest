@@ -31,4 +31,3 @@ for i in range(m):
         print('Y', end=' ')
     else:
         print('N', end=' ')
-    print(0)
