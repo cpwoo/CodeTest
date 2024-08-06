@@ -22,7 +22,7 @@ for i in range(N+1):
         if i+1 in holidays:
             dp[i+1][j] = min(result, dp[i+1][j])
         
-        if j >= 3 :
+        if j >= 3:
             dp[i+1][j-3] = min(dp[i+1][j-3], result)
         
         dp[i+1][j] = min(result+10000, dp[i+1][j])
