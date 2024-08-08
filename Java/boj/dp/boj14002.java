@@ -50,7 +50,6 @@ public class boj14002 {
         while(!stack.isEmpty()) sb.append(stack.pop()).append(' ');
 
         bw.write(sb.toString());
-
     }
 
 }
