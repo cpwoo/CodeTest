@@ -26,8 +26,6 @@ def dfs(x, y, p):
 
 n = int(input())
 arr = [list(input().split()) for _ in range(n)]
-visited = [[0]*n for _ in range(n)]
-visited[0][0] = 1
 
 _max = -sys.maxsize
 _min = sys.maxsize
