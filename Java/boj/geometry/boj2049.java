@@ -38,7 +38,7 @@ public class boj2049 {
         int n = Integer.parseInt(br.readLine());
 
         List<Point> points = new ArrayList<>();
-        for (int i = 0; i < n; i++) {
+        for (int i=0; i<n; i++) {
             st = new StringTokenizer(br.readLine());
             int x = Integer.parseInt(st.nextToken());
             int y = Integer.parseInt(st.nextToken());
@@ -70,7 +70,7 @@ public class boj2049 {
         long maxDist = dist(cvxh.get(l), cvxh.get(r));
         int c = cvxh.size();
 
-        for (int i = 0; i < c; i++) {
+        for (int i=0; i<c; i++) {
             Point lp = cvxh.get(l);
             Point nlp = cvxh.get((l+1)%c);
             Point rp = cvxh.get(r);
