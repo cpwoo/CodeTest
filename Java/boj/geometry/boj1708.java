@@ -38,7 +38,7 @@ public class boj1708 {
         int n = Integer.parseInt(br.readLine());
 
         List<Point> points = new ArrayList<>();
-        for (int i = 0; i < n; i++) {
+        for (int i=0; i<n; i++) {
             st = new StringTokenizer(br.readLine());
             int x = Integer.parseInt(st.nextToken());
             int y = Integer.parseInt(st.nextToken());
