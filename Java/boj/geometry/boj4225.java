@@ -53,7 +53,6 @@ public class boj4225 {
         }
         Collections.sort(points);
 
-        n = points.size();
         Stack<Point> stk = new Stack<>();
         for(int i=0; i<n; i++) {
             while(stk.size() > 1 && ccw(stk.get(stk.size()-2), stk.get(stk.size()-1), points.get(i)) < 0) {
