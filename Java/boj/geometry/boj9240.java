@@ -35,8 +35,7 @@ public class boj9240 {
     }
 
     private static void solve() throws Exception {
-        st = new StringTokenizer(br.readLine());
-        int c = Integer.parseInt(st.nextToken());
+        int c = Integer.parseInt(br.readLine());
 
         List<Point> points = new ArrayList<>();
         for(int i=0; i<c; i++) {
