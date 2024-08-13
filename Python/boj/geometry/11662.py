@@ -2,7 +2,7 @@ import sys
 input = lambda: sys.stdin.readline().rstrip()
 
 # 3분할법 -> left3, right3 크기 비교해서 큰 쪽에는 최솟값이 없다고 판단, left 와 right 조정
-def threeSearch(left, right):
+def ternarySearch(left, right):
     while abs(right-left) > 1e-9:
         left3 = (2*left+right)/3
         right3 = (left+2*right)/3
@@ -20,4 +20,4 @@ def dist(t):
     return ((kx-mx)**2 + (ky-my)**2)**0.5
 
 ax, ay, bx, by, cx, cy, dx, dy = map(int, input().split())
-print("%.10f" % threeSearch(0, 1))
+print("%.10f" % ternarySearch(0, 1))
