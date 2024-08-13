@@ -22,8 +22,9 @@ if (fr == 0) or (to != 0 and fr > to):
 
 stack = []
 for i in range(fr, fr+n):
+    i %= n
     while len(stack) > 1:
-        if ccw(points[stack[-2]], points[stack[-1]], points[i%n]) < 0:
+        if ccw(points[stack[-2]], points[stack[-1]], points[i]) < 0:
             break
         stack.pop()
     stack.append(i)
