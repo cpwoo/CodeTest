@@ -23,7 +23,7 @@ for _ in range(n-1):
     graph[b].append(a)
 
 visited = [0]*(n+1)
-dp = [[0, score[i]]*2 for i in range(n+1)]
+dp = [[0, score[i]] for i in range(n+1)]
 
 dfs(1)
 print(max(dp[1][1], dp[1][0]))
