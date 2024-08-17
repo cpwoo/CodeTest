@@ -40,7 +40,6 @@ for _ in range(e):
     candidates.add(b)
 
 visited = [0]*(v+1)
-cnt = 1
 
 for vertex in candidates:
     if not visited[vertex]:
