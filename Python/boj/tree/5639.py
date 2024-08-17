@@ -15,7 +15,7 @@ def postorder(first, end):
     postorder(first+1, mid-1)
     postorder(mid, end)
     
-    return arr[first]
+    print(arr[first])
 
 
 arr = []
@@ -26,4 +26,4 @@ while True:
     except:
         break
 
-print(postorder(0, len(arr)-1))
+postorder(0, len(arr)-1)
