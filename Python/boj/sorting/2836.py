@@ -1,8 +1,6 @@
 import sys
 input = lambda: sys.stdin.readline().rstrip()
 
-INF = int(1e9)
-
 n, m = map(int, input().split())
 
 arr = []
