@@ -29,7 +29,6 @@ def Sum(node, start, end, left, right):
 
 n, m = map(int, input().split())
 tree = [0]*(4*n)
-L = [0]*n
 
 for _ in range(m):
     q, a, b = map(int, input().split())
