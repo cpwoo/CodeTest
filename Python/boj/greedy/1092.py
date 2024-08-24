@@ -12,8 +12,6 @@ if box[0] > crane[0]:
 else:
     time = 0
     while box:
-        if not box:
-            break
         for c in crane:
             for b in box:
                 if c >= b:
