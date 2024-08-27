@@ -4,7 +4,6 @@ input = lambda: sys.stdin.readline().rstrip()
 a, b = map(int, input().split())
 check = [1]*(b-a+1)
 
-cnt = 0
 i = 2
 
 while i**2 <= b:
