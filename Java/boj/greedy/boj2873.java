@@ -3,7 +3,7 @@ package CodeTest.Java.boj.greedy;
 import java.io.*;
 import java.util.*;
 
-// StringBuilder 의 repeat 메소드는 Java 11부터 추가되므로 Java 11로 제출
+// String 의 repeat 메소드는 Java 11부터 추가되므로 Java 11로 제출
 
 public class boj2873 {
     private static BufferedReader br;
