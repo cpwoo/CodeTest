@@ -31,10 +31,8 @@ for i in range(n):
     for j in range(4):
         matrix[5*i+j][5*i+j+1] = 1
 
-
-if t>0:
-    ans = deepcopy(matrix)
-    t -= 1
+ans = deepcopy(matrix)
+t -= 1
 
 while t>0:
     if t&1: ans = mul(ans, matrix)
