@@ -14,7 +14,7 @@ p = [0]*len(primes)
 for i in range(len(primes)):
     j = primes[i]
     while j <= n:
-        p[i] += n//j - k//j -(n-k)//j
+        p[i] += n//j - k//j - (n-k)//j
         j *= primes[i]
 
 res = 1
