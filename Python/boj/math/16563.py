@@ -11,9 +11,6 @@ for i in range(2, int(MAX**0.5)+1):
             if sieve[j] == j:
                 sieve[j] = i
 
-prime = [i for i in range(2, MAX) if sieve[i] == i]
-
-
 n = int(input())
 arr = list(map(int, input().split()))
 
