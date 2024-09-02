@@ -28,7 +28,7 @@ def dfs(x,y,val,depth):
     
     for i in range(4):
         nx, ny = x+dx[i], y+dy[i]
-        if (0 <= nx <N) and (0 <= ny <M):
+        if (0 <= nx < N) and (0 <= ny < M):
             if check[nx][ny]:
                 check[nx][ny] = False
                 dfs(nx,ny,val+board[nx][ny],depth+1)
