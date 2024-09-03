@@ -41,5 +41,6 @@ def backtracking(depth, res, horses):
 
 
 dice = list(map(int, input().split()))
+answer = 0
 backtracking(0, 0, [0, 0, 0, 0])
 print(answer)
