@@ -1,6 +1,8 @@
 import sys
 input = lambda: sys.stdin.readline().rstrip()
 
+sys.setrecursionlimit(10**6)
+
 def find(x):
     if parent[x] != x:
         parent[x] = find(parent[x])
