@@ -6,7 +6,6 @@ from heapq import *
 INF = sys.maxsize
 
 for _ in range(int(input())):
-    ans = INF
     n, m, k = map(int, input().split())
     graph = [[] for _ in range(n+1)]
     for _ in range(k):
