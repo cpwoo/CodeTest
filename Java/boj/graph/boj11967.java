@@ -8,7 +8,7 @@ public class boj11967 {
     private static BufferedWriter bw;
     private static StringTokenizer st;
 
-    private static int[] dx = {-1,1,0,0}, dy = {0,0,-1,1};
+    private static final int[] dx = {-1,1,0,0}, dy = {0,0,-1,1};
 
     public static void main(String[] args) throws Exception {
         br = new BufferedReader(new InputStreamReader(System.in));
