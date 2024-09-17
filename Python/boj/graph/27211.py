@@ -14,8 +14,6 @@ for i in range(N):
         if board[i][j]:
             visited[i][j] = -1
 
-q = deque()
-
 cnt = 1
 for i in range(N):
     for j in range(M):
