@@ -10,7 +10,7 @@ public class boj17142 {
 
     private static final int[] dx = {-1,1,0,0}, dy = {0,0,-1,1};
 
-    private static int n, m, lab[][], choice[][], ret;
+    private static int n, m, lab[][], wallCnt, choice[][], ret;
     private static List<int[]> virus;
 
     public static void main(String[] args) throws Exception {
@@ -29,6 +29,7 @@ public class boj17142 {
         m = Integer.parseInt(st.nextToken());
 
         lab = new int[n][n];
+        wallCnt = 0;
         virus = new ArrayList<>();
         for(int i=0; i<n; i++) {
             st = new StringTokenizer(br.readLine());
@@ -37,7 +38,15 @@ public class boj17142 {
                 if(lab[i][j] == 2) {
                     virus.add(new int[]{i, j});
                 }
+                else if(lab[i][j] == 1) {
+                    wallCnt++;
+                }
             }
+        }
+
+        if(virus.size()+wallCnt == n*n) {
+            bw.write("0");
+            return;
         }
 
         choice = new int[m][2];
@@ -79,10 +88,16 @@ public class boj17142 {
             int x = cur[0], y = cur[1];
             for(int i=0; i<4; i++) {
                 int nx = x+dx[i], ny = y+dy[i];
-                if(0 <= nx && nx < n && 0 <= ny && ny < n && visited[nx][ny] == -1 && lab[nx][ny] != 1) {
-                    q.add(new int[]{nx, ny});
-                    visited[nx][ny] = visited[x][y]+1;
-                    max = Math.max(max, visited[x][y]+1);
+                if(0 <= nx && nx < n && 0 <= ny && ny < n && visited[nx][ny] == -1) {
+                    if(lab[nx][ny] == 0) {
+                        q.add(new int[]{nx, ny});
+                        visited[nx][ny] = visited[x][y]+1;
+                        max = Math.max(max, visited[nx][ny]);
+                    }
+                    else if(lab[nx][ny] == 2) {
+                        q.add(new int[]{nx, ny});
+                        visited[nx][ny] = visited[x][y]+1;
+                    }
                 }
             }
         }
