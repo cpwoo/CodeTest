@@ -55,7 +55,6 @@ for i in range(n):
         if board[i][j] == 0:
             cand.append((i, j))
 
-L = len(cand)
 answer = 0
 
 for can in combinations(cand, 2):
