@@ -13,5 +13,5 @@ for _ in range(n):
 
 s = " ".join(str(x) for x in grow[m:])
 
-for i in range(m-1, -1,  -1):
+for i in range(m-1, -1, -1):
     print(grow[i], s)
