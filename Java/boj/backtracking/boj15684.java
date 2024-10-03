@@ -3,7 +3,7 @@ package CodeTest.Java.boj.backtracking;
 import java.io.*;
 
 public class boj15684 {
-    private static int N, M, H, answer;
+    private static int N, H, M, answer;
     private static boolean[][] v;
 
     public static void main(String[] args) throws Exception {
@@ -12,13 +12,13 @@ public class boj15684 {
 
         String[] inp = br.readLine().split(" ");
         N = Integer.parseInt(inp[0]);
-        M = Integer.parseInt(inp[1]);
-        H = Integer.parseInt(inp[2]);
+        H = Integer.parseInt(inp[1]);
+        M = Integer.parseInt(inp[2]);
 
-        v = new boolean[H][N];
+        v = new boolean[M][N];
         int a, b;
 
-        for(int i=0; i<M; i++) {
+        for(int i=0; i<H; i++) {
             inp = br.readLine().split(" ");
             a = Integer.parseInt(inp[0]);
             b = Integer.parseInt(inp[1]);
@@ -44,7 +44,7 @@ public class boj15684 {
         if(cnt == 3) return;
 
         int k;
-        for(int i=x; i<H; i++) {
+        for(int i=x; i<M; i++) {
             k = (i == x) ? y : 0;
             for(int j=k; j<N-1; j++) {
                 if(!v[i][j]) {
@@ -61,7 +61,7 @@ public class boj15684 {
 
         for(int i=0; i<N; i++) {
             tmp = i;
-            for(int j=0; j<H; j++) {
+            for(int j=0; j<M; j++) {
                 if(v[j][tmp]) {
                     tmp++;
                 } else if(tmp > 0 && v[j][tmp-1]) {
