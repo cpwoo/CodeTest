@@ -86,7 +86,7 @@ public class boj17140 {
             });
 
             List<Integer> nRow = new ArrayList<>();
-            for (int[] entry : cntList) {
+            for(int[] entry : cntList) {
                 nRow.add(entry[0]);
                 nRow.add(entry[1]);
             }
