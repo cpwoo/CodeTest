@@ -76,7 +76,7 @@ public class boj19237 {
 
     private static void updateSmell() {
         for(int i=0; i<N; i++) for(int j=0; j<N; j++) {
-            if(smell[i][j][1] > 0 ) smell[i][j][1]--;
+            if(smell[i][j][1] > 0) smell[i][j][1]--;
             if(arr[i][j] != 0) {
                 smell[i][j][0] = arr[i][j];
                 smell[i][j][1] = K;
