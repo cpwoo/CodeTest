@@ -4,15 +4,42 @@ import java.io.*;
 import java.util.*;
 
 public class boj21609 {
+    static class Group implements Comparable<Group> {
+        int x, y, blockCnt, rainbowCnt;
+
+        Group(int x, int y, int blockCnt, int rainbowCnt) {
+            this.x = x;
+            this.y = y;
+            this.blockCnt = blockCnt;
+            this.rainbowCnt = rainbowCnt;
+        }
+
+        @Override
+        public int compareTo(Group o) {
+            if(this.blockCnt != o.blockCnt) return o.blockCnt-this.blockCnt;
+            else if(this.rainbowCnt != o.rainbowCnt) return o.rainbowCnt-this.rainbowCnt;
+            else if(this.x != o.x) return o.x-this.x;
+            return o.y-this.y;
+        }
+    }
+
+    static class Info {
+        int x, y;
+        Info(int x, int y) {
+            this.x = x;
+            this.y = y;
+        }
+    }
+
     private static BufferedReader br;
     private static BufferedWriter bw;
     private static StringTokenizer st;
-    private static StringBuilder sb;
 
-    private static int[] dr = {0,0,1,-1}, dc = {1,-1,0,0};
+    private static final int[] dx = {-1,1,0,0}, dy = {0,0,-1,1};
 
-    private static int n, m, board[][], tmp;
-    private static Map<Character, Integer> dmap;
+    private static int N, score, a[][];
+    private static boolean[][] visited;
+    private static List<Group> blocks;
 
     public static void main(String[] args) throws Exception {
         br = new BufferedReader(new InputStreamReader(System.in));
@@ -26,66 +53,118 @@ public class boj21609 {
 
     private static void solve() throws Exception {
         st = new StringTokenizer(br.readLine());
-        n = Integer.parseInt(st.nextToken());
-        m = Integer.parseInt(st.nextToken());
-        int r = Integer.parseInt(st.nextToken());
+        N = Integer.parseInt(st.nextToken());
+        st.nextToken();
 
-        board = new int[n][m];
-        int[][] copy = new int[n][m];
-        for(int i=0; i<n; i++) {
+        a = new int[N][N];
+        for(int i=0; i<N; i++) {
             st = new StringTokenizer(br.readLine());
-            for(int j=0; j<m; j++) {
-                board[i][j] = copy[i][j] = Integer.parseInt(st.nextToken());
+            for(int j=0; j<N; j++) {
+                a[i][j] = Integer.parseInt(st.nextToken());
             }
         }
 
-        dmap = new HashMap<>();
-        dmap.put('E', 0); dmap.put('W', 1);
-        dmap.put('S', 2); dmap.put('N', 3);
+        score = 0;
 
-        int total = 0;
-
-        while(r-- > 0) {
-            st = new StringTokenizer(br.readLine());
-            int ar = Integer.parseInt(st.nextToken())-1;
-            int ac = Integer.parseInt(st.nextToken())-1;
-            char ad = st.nextToken().charAt(0);
-
-            st = new StringTokenizer(br.readLine());
-            int dr = Integer.parseInt(st.nextToken())-1;
-            int dc = Integer.parseInt(st.nextToken())-1;
-
-            tmp = 0;
-            if(board[ar][ac] != 0) attack(ar, ac, ad, board[ar][ac]);
-
-            board[dr][dc] = copy[dr][dc];
-            total += tmp;
+        while(true) {
+            if(!findBlockGroup()) break;
+            gravity();
+            rotate();
+            gravity();
         }
 
-        sb = new StringBuilder();
-        sb.append(total).append('\n');
+        bw.write(score+"");
+    }
 
-        for(int i=0; i<n; i++) {
-            for(int j=0; j<m; j++) {
-                sb.append((board[i][j] != 0) ? 'S' : 'F').append(' ');
+    private static boolean findBlockGroup() {
+        visited = new boolean[N][N];
+        blocks = new ArrayList<>();
+
+        for(int i=0; i<N; i++) for(int j=0; j<N; j++) {
+            if(!visited[i][j] && a[i][j] > 0) {
+                bfs(i, j, true);
             }
-            sb.append('\n');
         }
 
-        bw.write(sb.toString());
+        if(blocks.isEmpty()) return false;
+
+        visited = new boolean[N][N];
+        Collections.sort(blocks);
+        bfs(blocks.get(0).x, blocks.get(0).y, false);
+        
+        remove();
+
+        return true;
     }
 
-    private static void attack(int sr, int sc, char sd, int len) {
-        if(board[sr][sc] != 0) {
-            board[sr][sc] = 0;
-            tmp++;
+    private static void bfs(int x, int y, boolean flag) {
+        int blockCnt = 1, rainbowCnt = 0;
+        visited[x][y] = true;
+
+        Deque<Info> q = new ArrayDeque<>();
+        q.add(new Info(x, y));
+
+        while(!q.isEmpty()) {
+            Info cur = q.poll();
+
+            for(int d=0; d<4; d++) {
+                int nx = cur.x+dx[d], ny = cur.y+dy[d];
+                if(0 <= nx && nx < N && 0 <= ny && ny < N && !visited[nx][ny]) {
+                    if(a[nx][ny] == 0 || a[nx][ny] == a[x][y]) {
+                        visited[nx][ny] = true;
+                        blockCnt++;
+                        if(a[nx][ny] == 0) rainbowCnt++;
+                        q.add(new Info(nx, ny));
+                    }
+                }
+            }
         }
-        for(int i=0; i<len-1; i++) {
-            sr += dr[dmap.get(sd)];
-            sc += dc[dmap.get(sd)];
-            if(sr < 0 || sr >= n || sc < 0 || sc >= m) continue;
-            attack(sr, sc, sd, board[sr][sc]);
+
+        if(blockCnt >= 2) blocks.add(new Group(x, y, blockCnt, rainbowCnt));
+
+        if(flag) {
+            for(int i=0; i<N; i++) for(int j=0; j<N; j++) {
+                if(a[i][j] == 0) visited[i][j] = false;
+            }
         }
     }
 
+    private static void remove() {
+        int cnt = 0;
+        for(int i=0; i<N; i++) for(int j=0; j<N; j++) {
+            if(visited[i][j]) {
+                cnt++;
+                a[i][j] = -2;
+            }
+        }
+
+        score += cnt*cnt;
+    }
+
+    private static void gravity() {
+        for(int x=N-1; x>=0; x--) for(int y=0; y<N; y++) {
+            if(a[x][y] >= 0) {
+                int nx = x;
+                while(true) {
+                    nx++;
+                    if(nx >= N || a[nx][y] != -2) break;
+                }
+                nx--;
+                if(nx != x) {
+                    a[nx][y] = a[x][y];
+                    a[x][y] = -2;
+                }
+            }
+        }
+    }
+
+    private static void rotate() {
+        int[][] tmp = new int[N][N];
+
+        for(int i=0; i<N; i++) for(int j=0; j<N; j++) {
+            tmp[(N-1)-j][i] = a[i][j];
+        }
+
+        a = tmp;
+    }
 }
